@@ -15,8 +15,11 @@ WORKDIR /var/www/html
 # Copiar el código fuente al contenedor
 COPY . .
 
-# Instalar las dependencias PHP del proyecto Symfony
+# Instalar las dependencias PHP del proyecto Symfony sin ejecutar scripts (para evitar fallos)
 RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+# Ejecutar migraciones automáticamente (sin interacción)
+RUN php bin/console doctrine:migrations:migrate --no-interaction
 
 # Exponer el puerto que usaremos
 EXPOSE 10000

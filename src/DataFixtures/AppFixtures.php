@@ -22,6 +22,15 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        // Crear usuario manual con datos fijos
+        $userManual = new User();
+        $userManual->setEmail('miemail@gmail.com');
+        $userManual->setRoles(['ROLE_USER']);
+        $hashedPassword = $this->passwordHasher->hashPassword($userManual, '1234');
+        $userManual->setPassword($hashedPassword);
+
+        $manager->persist($userManual);
+        
         //Faker en español
         $faker = Factory::create('es_ES');
 
