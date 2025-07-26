@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: app-restaurant
+    env: php
+    buildCommand: "./build.sh"
+    startCommand: "php -S 0.0.0.0:10000 -t public"
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: APP_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: app-restaurants-db
+          property: connectionString
+
+databases:
+  - name: app-restaurants-db
+    databaseName: app_restaurants
+    user: app_restaurants

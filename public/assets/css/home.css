@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    height: 100%;
+    margin: 0;
+    background-color: #b6c9e9;
+}
+
+/*------------------Maquetación Home de la aplicación------------------------*/
+
+form > button {
+    background-color: #0F4DBC;
+    border: 0;
+    color: white;
+    height: 5vh;
+    width: 8em;
+    font-family: "Roboto";
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+form {
+    width: 6.5%;
+    text-align: center;
+    position: relative;
+    top: 4vh;
+    left: 90%;
+}
+
+.background-table {
+    background-color: white;
+    width: 70%;
+    height: 70vh;
+    position: relative;
+    top: 8vh;
+    left: 15%;
+    overflow-y: auto;
+    border: 1px solid #0F4DBC;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-spacing: 0;
+}
+
+th {
+    background-color: #0F4DBC;
+    font-family: "Roboto";
+    color: white;
+    font-size: 18px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: 300;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+tr:nth-child(odd) {
+    background-color: #b6c9e9;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+tr {
+    cursor: pointer;
+}
+
+.active-row{
+    background-color: #002664 !important;
+    color: white !important;
+}
+
+#buttons {
+    position: relative;
+    top: 10vh;
+    left: 15%;
+    width: 30%;
+}
+
+#buttons > button {
+    background-color: #0F4DBC;
+    border: 0;
+    color: white;
+    height: 5vh;
+    width: 8em;
+    font-family: "Roboto";
+    font-weight: 600;
+    font-size: 15px;
+    margin-right: 1%;
+    cursor: pointer;
+}
+
+#buttonNew:disabled, #buttonEdit:disabled, #buttonErase:disabled {
+    background-color: rgb(112, 178, 226) !important;
+    color: #3b6bbd !important;
+    cursor: not-allowed;
+}
+
+/*----------------------Maquetación Modal Nuevo Restaurante--------------------------*/
+
+#overlay-new-restaurant {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+#background-new-restaurant {
+    background-color: white;
+    width: 25%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    left: 40%;
+    top: 30vh;
+    display: none;
+}
+
+#container-new-restaurant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-new-restaurant > h1 {
+    font-family: "Roboto";
+    color: #0F4DBC;
+}
+
+#container-new-restaurant > label {
+    font-family: "Roboto";
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#container-new-restaurant > input {
+    height: 25px;
+    width: 80%;
+    border: 1px solid #0F4DBC;
+    font-family: "Roboto";
+    text-align: center;
+    font-size: 15px;
+}
+
+#buttons-new-restaurant {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#buttons-new-restaurant > button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 40px;
+    background-color: #0F4DBC;
+    margin-right: 10px;
+    width: 10em;
+    color: white;
+    border: 0px;
+    font-family: "Roboto";
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/*---------------------------Maquetación Modal Actualizar Restaurante--------------------------*/
+
+#overlay-update-restaurant {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+#background-update-restaurant {
+    background-color: white;
+    width: 25%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    left: 40%;
+    top: 30vh;
+    display: none;
+}
+
+#container-update-restaurant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-update-restaurant > h1 {
+    font-family: "Roboto";
+    color: #0F4DBC;
+}
+
+#container-update-restaurant > label {
+    font-family: "Roboto";
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#container-update-restaurant > input {
+    height: 25px;
+    width: 80%;
+    border: 1px solid #0F4DBC;
+    font-family: "Roboto";
+    text-align: center;
+    font-size: 15px;
+}
+
+#buttons-update-restaurant {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#buttons-update-restaurant > button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 40px;
+    background-color: #0F4DBC;
+    margin-right: 10px;
+    width: 10em;
+    color: white;
+    border: 0px;
+    font-family: "Roboto";
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/*---------------------------Maquetación Modal Eliminar Restaurante--------------------------*/
+
+#overlay-erase-restaurant {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+#background-erase-restaurant {
+    background-color: white;
+    width: 25%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    left: 40%;
+    top: 30vh;
+    display: none;
+}
+
+#container-erase-restaurant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#container-erase-restaurant > h1 {
+    font-family: "Roboto";
+    color: #0F4DBC;
+}
+
+#container-erase-restaurant > p {
+    font-family: "Roboto";
+    width: 90%;
+    font-size: 17px;
+}
+
+#buttons-erase-restaurant {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#buttons-erase-restaurant > button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 40px;
+    background-color: #0F4DBC;
+    margin-right: 10px;
+    width: 10em;
+    color: white;
+    border: 0px;
+    font-family: "Roboto";
+    font-size: 15px;
+    cursor: pointer;
+}

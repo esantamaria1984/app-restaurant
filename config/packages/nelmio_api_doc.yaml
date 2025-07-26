@@ -1,0 +1,11 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: App-Restaurants
+            description: "Documentación Automática de App-Restaurants"
+            version: 1.0.0
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/ # Documenta todas las rutas
+        name_patterns:
+            - ^api_
