@@ -18,14 +18,15 @@ COPY . .
 # Instalar las dependencias PHP del proyecto Symfony
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Ejecutar migraciones automáticamente (sin interacción)
-RUN php bin/console doctrine:migrations:migrate --no-interaction
+# Copiar el script entrypoint y darle permisos
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Exponer el puerto que usaremos
 EXPOSE 10000
 
-# Comando para iniciar el servidor integrado de PHP apuntando a la carpeta "public"
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
+# Usar el script como entrypoint
+ENTRYPOINT ["sh", "/entrypoint.sh"]
 
 
 
