@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_pgsql intl zip opcache \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Instalar Composer
+# Instalar Composer desde la imagen oficial
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Establecer el directorio de trabajo
@@ -15,13 +15,14 @@ WORKDIR /var/www/html
 # Copiar el código fuente al contenedor
 COPY . .
 
-# Instalar dependencias PHP
-RUN composer install --no-dev --optimize-autoloader
+# Instalar las dependencias PHP del proyecto Symfony
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Exponer el puerto que usaremos
 EXPOSE 10000
 
-# Comando para arrancar el servidor PHP integrado en la carpeta public
+# Comando para iniciar el servidor integrado de PHP apuntando a la carpeta "public"
 CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
+
 
 
