@@ -11,9 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Common\DataFixtures\Loader;
-use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
-use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\DataFixtures\AppFixtures;
 
@@ -57,20 +54,16 @@ class SecurityController extends AbstractController
         return new Response('<pre>' . $output->fetch() . '</pre>');
     }
     
-    // Ruta temporal para cargar fixtures
+    // Ruta temporal para cargar fixtures    
     #[Route('/load-fixtures', name: 'app_load_fixtures')]
     public function loadFixtures(
-        EntityManagerInterface $em,
+        EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher
     ): Response {
-        $loader = new Loader();
-        $loader->addFixture(new AppFixtures($passwordHasher));
+        $fixtures = new AppFixtures($passwordHasher);
+        $fixtures->load($entityManager);
 
-        $purger = new ORMPurger($em);
-        $executor = new ORMExecutor($em, $purger);
-        $executor->execute($loader->getFixtures());
-
-        return new Response('Fixtures cargadas correctamente');
+        return new Response('Fixtures cargadas correctamente.');
     }
     
 }
