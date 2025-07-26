@@ -15,7 +15,7 @@ WORKDIR /var/www/html
 # Copiar el código fuente al contenedor
 COPY . .
 
-# Instalar las dependencias PHP del proyecto Symfony sin ejecutar scripts (para evitar fallos)
+# Instalar las dependencias PHP del proyecto Symfony
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Ejecutar migraciones automáticamente (sin interacción)
