@@ -43,11 +43,11 @@
         "symfony/web-link": "^6.4",
         "symfony/yaml": "^6.4",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "fakerphp/faker": "^1.24"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.1",
-        "fakerphp/faker": "^1.24",
         "phpstan/phpdoc-parser": "^1.4",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "^6.4",
