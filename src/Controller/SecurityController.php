@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class SecurityController extends AbstractController
 {
@@ -29,4 +33,22 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+
+    #[Route('/run-migrations')]
+    public function runMigrations(KernelInterface $kernel): Response
+    {
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput([
+            'command' => 'doctrine:migrations:migrate',
+            '--no-interaction' => true,
+        ]);
+        $output = new BufferedOutput();
+
+        $application->run($input, $output);
+
+        return new Response('<pre>' . $output->fetch() . '</pre>');
+    }   
+    
 }

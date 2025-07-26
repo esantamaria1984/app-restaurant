@@ -18,15 +18,11 @@ COPY . .
 # Instalar las dependencias PHP del proyecto Symfony
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Copiar el script entrypoint y darle permisos
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
 # Exponer el puerto que usaremos
 EXPOSE 10000
 
-# Usar el script como entrypoint
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+# Comando para iniciar el servidor PHP
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
 
 
 
