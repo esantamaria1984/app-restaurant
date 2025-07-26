@@ -54,16 +54,4 @@ class SecurityController extends AbstractController
         return new Response('<pre>' . $output->fetch() . '</pre>');
     }
     
-    // Ruta temporal para cargar fixtures    
-    #[Route('/load-fixtures', name: 'app_load_fixtures')]
-    public function loadFixtures(
-        EntityManagerInterface $entityManager,
-        UserPasswordHasherInterface $passwordHasher
-    ): Response {
-        $fixtures = new AppFixtures($passwordHasher);
-        $fixtures->load($entityManager);
-
-        return new Response('Fixtures cargadas correctamente.');
-    }
-    
 }
