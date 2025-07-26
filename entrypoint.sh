@@ -2,6 +2,7 @@
 
 # Ejecutar migraciones de Doctrine
 echo "Ejecutando migraciones..."
+php bin/console doctrine:schema:drop --force --no-interaction
 php bin/console doctrine:migrations:migrate --no-interaction
 
 # Arrancar servidor PHP integrado apuntando a la carpeta public
