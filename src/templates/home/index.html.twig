@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ path('app_logout') }}" method="post">
+    <button type="submit">Cerrar Sesión</button>
+</form>    
+
+<div class="background-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>    
+            {% for company in restaurants %}
+                <tr id="{{ company.id }}">
+                    <td>{{ company.name }}</td>
+                    <td>{{ company.address }}</td>
+                    <td>{{ company.phone }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>  
+    </table>
+</div>
+
+<div id="buttons">
+    <button id="buttonNew">Nuevo</button>
+    <button id="buttonEdit">Actualizar</button>
+    <button id="buttonErase">Eliminar</button>
+</div>
+
+<div id="overlay-new-restaurant">
+    <div id="background-new-restaurant">
+        <div id="container-new-restaurant">
+            <h1>Nuevo Restaurante</h1>
+            <label>Nombre</label>
+            <input type="text" id="name-new">
+            <label>Dirección</label>
+            <input type="text" id="address-new">
+            <label>Teléfono</label>
+            <input type="text" id="phone-new">
+            <div id="buttons-new-restaurant">
+                <button id="save-new-restaurant">Guardar</button>
+                <button id="close-new-restaurant">Cerrar</button>
+            </div>
+        </div>    
+    </div>
+</div>
+
+<div id="overlay-update-restaurant">
+    <div id="background-update-restaurant">
+        <div id="container-update-restaurant">
+            <h1>Actualizar Restaurante</h1>
+            <label>Nombre</label>
+            <input type="text" id="name-update">
+            <label>Dirección</label>
+            <input type="text" id="address-update">
+            <label>Teléfono</label>
+            <input type="text" id="phone-update">
+            <div id="buttons-update-restaurant">
+                <button id="save-update-restaurant">Guardar</button>
+                <button id="close-update-restaurant">Cerrar</button>
+            </div>
+        </div>    
+    </div>
+</div>
+
+<div id="overlay-erase-restaurant">
+    <div id="background-erase-restaurant">
+        <div id="container-erase-restaurant">
+            <h1>Eliminar Restaurante</h1>
+            <p>¿Está seguro de que desea eliminar un restaurante?<br>Con esta acción borrará todos los datos asociados y no se puede deshacer</p>
+            <div id="buttons-erase-restaurant">
+                <button id="erase-restaurant">Eliminar</button>
+                <button id="close-erase-restaurant">Cerrar</button>
+            </div>    
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/home.js') }}" defer></script>
+{% endblock %}

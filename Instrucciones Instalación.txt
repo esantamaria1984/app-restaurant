@@ -1,0 +1,61 @@
+INSTALAR DOCKER
+
+Asegurarse de que Docker esta instalado para poder ejecutar las siguientes instrucciones.
+
+CONSTRUIR Y LEVANTAR IMÁGENES Y CONTENEDORES DE DOCKER
+
+Desde el terminal, Git-Bash o Powershell acceder al directorio donde esta la aplicación y los archivos dockerfile y docker-compose y ejecutar el siguiente comando:
+
+	docker-compose up --build
+
+Docker construirá las correspondientes imágenes y levantara los contenedores necesarios.
+
+Para comprobar que los contenedores están ejecutándose poner el siguientes comando:
+
+	docker ps
+
+Para arrancar los contenedores poner el siguiente comando:
+
+	docker-compose start
+
+Para apagar los contenedores poner el siguiente comando;
+
+	docker-compose stop
+
+ACCEDER AL CONTENEDOR DE PHP Y ARRANCAR EL SERVER
+
+Para entrar al contenedor de PHP escribir la siguiente instrucción:
+
+	Docker exec -it php bash
+
+Una vez dentro del contenedor PHP escribir la siguiente instrucción para arrancar el server:
+
+	php -S 0.0.0.0:8000 -t public
+
+Para apagar el server pulsar Ctrl+C y para salir del contenedor PHP escribir exit
+
+MIGRACIONES Y FIXTURES
+
+Para ejecutar las migraciones y fixtures en la base de datos ejecutar el siguiente comando en el contenedor de PHP:
+
+	EJECUTAR MIGRACIONES -> php bin/console doctrine:migrations:migrate --no-interaction
+	EJECUTAR FIXTURES -> php bin/console doctrine:fixtures:load --no-interaction
+
+Si pidiera instalar el DoctrineFixturesBundle se puede instalar con este comando:
+
+	composer require --dev orm-fixtures
+
+ENLACES EN LOCAL
+
+Los enlaces en local para acceder a la aplicación, a la documentación automática y phpmyadmin son los siguientes:
+
+	APLICACIÓN -> http://localhost:8000
+	DOCUMENTACIÓN AUTOMÁTICA -> http://localhost:8000/api/doc
+	PHPMYADMIN -> http://localhost:8080
+
+CREDENCIALES LOGIN
+
+La aplicación tiene un login para poder acceder, las credenciales para poder acceder son las siguientes:
+
+	Email -> ferrer.leo@example.net
+	Contraseña -> 1234
